@@ -93,7 +93,7 @@ export function Lesson() {
       {/* Top bar */}
       <header className="flex items-center justify-between px-8 py-4 border-b border-gray-200 bg-white shrink-0">
         <button
-          onClick={() => navigate("/")}
+          onClick={() => navigate(lesson ? `/module/${lesson.moduleId}` : "/")}
           className="text-[var(--color-primary-light)] text-lg font-medium hover:underline cursor-pointer"
         >
           ← {strings.navigation.home}

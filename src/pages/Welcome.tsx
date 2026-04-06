@@ -2,75 +2,31 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useI18n } from "../hooks/useI18n";
 import { loadAllModules, loadModuleLessons } from "../services/contentLoader";
-import { getLastCompletedLessonId, getCompletedLessonIds } from "../services/progress";
+import { getCompletedLessonIds } from "../services/progress";
 
 export function Welcome() {
   const { strings } = useI18n();
   const navigate = useNavigate();
-  const [nextLessonId, setNextLessonId] = useState<string | null>(null);
   const [hasProgress, setHasProgress] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function findNextLesson() {
+    async function checkProgress() {
       try {
         const completedIds = await getCompletedLessonIds();
-        const lastCompleted = await getLastCompletedLessonId();
-
-        if (completedIds.size === 0 || !lastCompleted) {
-          // No progress — start from the beginning
-          const modules = loadAllModules();
-          if (modules.length > 0) {
-            const lessons = loadModuleLessons(modules[0].id);
-            if (lessons.length > 0) {
-              setNextLessonId(lessons[0].id);
-            }
-          }
-          setLoading(false);
-          return;
-        }
-
-        setHasProgress(true);
-
-        // Find the next uncompleted lesson
-        const modules = loadAllModules();
-        for (const mod of modules) {
-          const lessons = loadModuleLessons(mod.id);
-          for (const lesson of lessons) {
-            if (!completedIds.has(lesson.id)) {
-              setNextLessonId(lesson.id);
-              setLoading(false);
-              return;
-            }
-          }
-        }
-
-        // All lessons completed — go to first lesson (review mode)
-        if (modules.length > 0) {
-          const lessons = loadModuleLessons(modules[0].id);
-          if (lessons.length > 0) {
-            setNextLessonId(lessons[0].id);
-          }
-        }
+        setHasProgress(completedIds.size > 0);
       } catch {
-        // If DB fails (e.g., first run before migration), start from beginning
-        const modules = loadAllModules();
-        if (modules.length > 0) {
-          const lessons = loadModuleLessons(modules[0].id);
-          if (lessons.length > 0) {
-            setNextLessonId(lessons[0].id);
-          }
-        }
+        // First run — no progress yet
       }
       setLoading(false);
     }
-
-    findNextLesson();
+    checkProgress();
   }, []);
 
   function handleStart() {
-    if (nextLessonId) {
-      navigate(`/lesson/${nextLessonId}`);
+    const modules = loadAllModules();
+    if (modules.length > 0) {
+      navigate(`/module/${modules[0].id}`);
     }
   }
 
@@ -100,10 +56,8 @@ export function Welcome() {
       {!loading && (
         <button
           onClick={handleStart}
-          disabled={!nextLessonId}
           className="px-10 py-4 text-xl font-semibold text-white rounded-xl
                      bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)]
-                     disabled:opacity-40 disabled:cursor-not-allowed
                      transition-colors duration-200 shadow-lg
                      focus-visible:outline-3 focus-visible:outline-[var(--color-accent)]
                      cursor-pointer"

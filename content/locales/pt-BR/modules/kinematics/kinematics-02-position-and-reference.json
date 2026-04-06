@@ -1,0 +1,101 @@
+{
+  "id": "kinematics-02-position-and-reference",
+  "moduleId": "kinematics",
+  "order": 2,
+  "title": "Posição e Referencial",
+  "description": "Aprenda a descrever onde um objeto está usando posição e referencial.",
+  "blocks": [
+    {
+      "type": "text",
+      "content": "Na aula passada, vimos que movimento é a mudança de posição em relação a um referencial. Agora vamos entender como descrever essa posição de forma precisa."
+    },
+    {
+      "type": "text",
+      "content": "Imagine uma estrada reta. Para saber onde um carro está, precisamos de duas coisas: um ponto de partida (origem) e uma forma de medir distâncias."
+    },
+    {
+      "type": "highlight",
+      "content": "Posição é o lugar onde um objeto se encontra em relação a uma origem escolhida. Representamos a posição pela letra S (ou x)."
+    },
+    {
+      "type": "text",
+      "content": "Para descrever posições, usamos uma reta orientada — uma linha com um sentido definido (positivo e negativo). Isso nos permite dizer se algo está 'à frente' ou 'atrás' da origem."
+    },
+    {
+      "type": "example",
+      "content": "Em uma rodovia, o marco zero (km 0) é a origem. Um carro no km 50 tem posição S = 50 km. Outro carro no km 30 tem posição S = 30 km. A diferença entre as posições (50 - 30 = 20 km) é a distância entre eles."
+    },
+    {
+      "type": "highlight",
+      "content": "Deslocamento é a variação de posição: ΔS = S_final - S_inicial. Pode ser positivo (avançou) ou negativo (voltou)."
+    },
+    {
+      "type": "text",
+      "content": "Cuidado: deslocamento e distância percorrida são coisas diferentes! Se você anda 3 km para frente e depois 1 km para trás, seu deslocamento é 2 km, mas a distância percorrida é 4 km."
+    },
+    {
+      "type": "example",
+      "content": "Um corredor sai da posição S = 0, vai até S = 100 m e volta até S = 60 m. Seu deslocamento é ΔS = 60 - 0 = 60 m. Mas a distância total percorrida é 100 + 40 = 140 m."
+    },
+    {
+      "type": "formula",
+      "content": "ΔS = S_final - S_inicial"
+    },
+    {
+      "type": "text",
+      "content": "Agora vamos praticar esses conceitos com exercícios."
+    }
+  ],
+  "exercises": [
+    {
+      "id": "ex-02-01",
+      "type": "multiple_choice",
+      "question": "Um carro está no km 80 de uma rodovia. Ele anda até o km 120. Qual é o deslocamento?",
+      "options": [
+        { "id": "a", "text": "80 km" },
+        { "id": "b", "text": "120 km" },
+        { "id": "c", "text": "40 km" },
+        { "id": "d", "text": "200 km" }
+      ],
+      "correctAnswer": "c",
+      "explanation": "Deslocamento = posição final - posição inicial = 120 - 80 = 40 km. O deslocamento é a variação de posição, não a posição em si.",
+      "hint": "Use a fórmula: ΔS = S_final - S_inicial"
+    },
+    {
+      "id": "ex-02-02",
+      "type": "true_false",
+      "question": "Deslocamento e distância percorrida são sempre iguais.",
+      "correctAnswer": "false",
+      "explanation": "Falso! Deslocamento é a diferença entre posição final e inicial (pode ser negativo). Distância percorrida é o total de caminho andado (sempre positivo). Só são iguais quando o objeto anda sempre no mesmo sentido, sem voltar.",
+      "hint": "Pense no exemplo do corredor que foi e voltou."
+    },
+    {
+      "id": "ex-02-03",
+      "type": "multiple_choice",
+      "question": "Um ciclista sai da posição S = 10 km, vai até S = 25 km e volta até S = 15 km. Qual o deslocamento total?",
+      "options": [
+        { "id": "a", "text": "25 km" },
+        { "id": "b", "text": "5 km" },
+        { "id": "c", "text": "15 km" },
+        { "id": "d", "text": "30 km" }
+      ],
+      "correctAnswer": "b",
+      "explanation": "Deslocamento = posição final - posição inicial = 15 - 10 = 5 km. Não importa o caminho percorrido, só as posições inicial e final.",
+      "hint": "Deslocamento só depende de onde começou e onde terminou."
+    },
+    {
+      "id": "ex-02-04",
+      "type": "multiple_choice",
+      "question": "No mesmo exemplo do ciclista, qual a distância total percorrida?",
+      "options": [
+        { "id": "a", "text": "5 km" },
+        { "id": "b", "text": "15 km" },
+        { "id": "c", "text": "25 km" },
+        { "id": "d", "text": "40 km" }
+      ],
+      "correctAnswer": "c",
+      "explanation": "De 10 até 25 = 15 km. De 25 até 15 = 10 km (voltou). Total percorrido = 15 + 10 = 25 km. A distância soma todos os trechos, independentemente do sentido.",
+      "hint": "Some todas as distâncias de cada trecho, sem considerar o sentido."
+    }
+  ]
+}
