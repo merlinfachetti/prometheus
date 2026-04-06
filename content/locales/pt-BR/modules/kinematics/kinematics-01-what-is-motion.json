@@ -1,0 +1,79 @@
+{
+  "id": "kinematics-01-what-is-motion",
+  "moduleId": "kinematics",
+  "order": 1,
+  "title": "O que é Movimento?",
+  "description": "Entenda o conceito fundamental de movimento na Física.",
+  "blocks": [
+    {
+      "type": "text",
+      "content": "Vamos começar do começo: o que significa dizer que algo está em movimento?"
+    },
+    {
+      "type": "text",
+      "content": "Imagine que você está sentado dentro de um ônibus. O ônibus começa a andar. Para uma pessoa na calçada, você está se movendo. Mas para a pessoa sentada ao seu lado, você está parado."
+    },
+    {
+      "type": "highlight",
+      "content": "Movimento é a mudança de posição de um corpo em relação a um ponto de referência."
+    },
+    {
+      "type": "text",
+      "content": "Isso quer dizer que movimento não é algo absoluto — depende de quem está observando. Esse \"quem está observando\" é o que chamamos de referencial."
+    },
+    {
+      "type": "example",
+      "content": "Pense em um passageiro dentro de um trem. Para outro passageiro no mesmo trem, ele está parado. Para alguém na estação, ele está se movendo a 80 km/h. Os dois estão certos — cada um usa um referencial diferente."
+    },
+    {
+      "type": "text",
+      "content": "Na Física, quando dizemos que algo \"está em movimento\", sempre precisamos dizer: em relação a quê. Sem essa informação, a frase não tem sentido completo."
+    },
+    {
+      "type": "highlight",
+      "content": "Referencial é o ponto ou objeto que usamos como base para descrever se algo está parado ou em movimento."
+    },
+    {
+      "type": "text",
+      "content": "Agora que você entende o que é movimento e referencial, vamos praticar com alguns exercícios."
+    }
+  ],
+  "exercises": [
+    {
+      "id": "ex-01-01",
+      "type": "multiple_choice",
+      "question": "Uma pessoa está andando dentro de um avião em voo. Em relação ao piloto do avião, essa pessoa está:",
+      "options": [
+        { "id": "a", "text": "Parada" },
+        { "id": "b", "text": "Em movimento" },
+        { "id": "c", "text": "Impossível saber" },
+        { "id": "d", "text": "Parada e em movimento ao mesmo tempo" }
+      ],
+      "correctAnswer": "b",
+      "explanation": "Como a pessoa está andando dentro do avião, ela está mudando de posição em relação ao piloto. Portanto, em relação ao piloto, ela está em movimento.",
+      "hint": "Pense: a posição dela está mudando em relação ao piloto?"
+    },
+    {
+      "id": "ex-01-02",
+      "type": "true_false",
+      "question": "Um objeto pode estar em movimento e parado ao mesmo tempo.",
+      "correctAnswer": "true",
+      "explanation": "Sim! Depende do referencial. Um passageiro no trem está parado em relação ao trem, mas em movimento em relação à estação. Os dois são verdade ao mesmo tempo, cada um no seu referencial.",
+      "hint": "Lembre-se do exemplo do ônibus que vimos na aula."
+    },
+    {
+      "id": "ex-01-03",
+      "type": "multiple_choice",
+      "question": "O que é um referencial na Física?",
+      "options": [
+        { "id": "a", "text": "Um tipo de movimento" },
+        { "id": "b", "text": "A velocidade de um objeto" },
+        { "id": "c", "text": "O ponto ou objeto usado como base para descrever o movimento" },
+        { "id": "d", "text": "A direção em que algo se move" }
+      ],
+      "correctAnswer": "c",
+      "explanation": "Referencial é o ponto ou objeto que escolhemos como base para observar e descrever se algo está parado ou em movimento. Sem definir um referencial, não conseguimos falar de movimento de forma completa.",
+      "hint": "Reveja o destaque sobre referencial na aula."
+    }
+  ]
+}

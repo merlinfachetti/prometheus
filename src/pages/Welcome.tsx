@@ -1,7 +1,21 @@
+import { useNavigate } from "react-router-dom";
 import { useI18n } from "../hooks/useI18n";
+import { loadAllModules, loadModuleLessons } from "../services/contentLoader";
 
 export function Welcome() {
   const { strings } = useI18n();
+  const navigate = useNavigate();
+
+  function handleStart() {
+    const modules = loadAllModules();
+    if (modules.length === 0) return;
+
+    const firstModule = modules[0];
+    const lessons = loadModuleLessons(firstModule.id);
+    if (lessons.length === 0) return;
+
+    navigate(`/lesson/${lessons[0].id}`);
+  }
 
   return (
     <div className="flex flex-col items-center justify-center h-full px-8 text-center">
@@ -25,8 +39,9 @@ export function Welcome() {
         </p>
       </div>
 
-      {/* Primary action — single clear CTA */}
+      {/* Primary action */}
       <button
+        onClick={handleStart}
         className="px-10 py-4 text-xl font-semibold text-white rounded-xl
                    bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)]
                    transition-colors duration-200 shadow-lg

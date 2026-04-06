@@ -1,0 +1,10 @@
+{
+  "id": "kinematics",
+  "title": "Cinemática",
+  "description": "Estudo do movimento dos corpos — como as coisas se movem, sem se preocupar com o porquê.",
+  "order": 1,
+  "lessons": [
+    "kinematics-01-what-is-motion",
+    "kinematics-02-position-and-reference"
+  ]
+}
