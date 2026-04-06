@@ -53,7 +53,7 @@ export function ModuleComplete() {
   if (loading || !mod) {
     return (
       <div className="flex items-center justify-center h-full">
-        <p className="text-xl text-[var(--color-text-muted)]">Carregando...</p>
+        <p className="text-lg" style={{ color: "var(--color-text-muted)" }}>Carregando...</p>
       </div>
     );
   }
@@ -61,39 +61,68 @@ export function ModuleComplete() {
   const percentage = totalExercises > 0 ? Math.round((totalScore / totalExercises) * 100) : 0;
 
   return (
-    <div className="flex flex-col items-center justify-center h-full px-8 text-center">
+    <div className="flex flex-col items-center justify-center h-full px-6 text-center animate-fade-in">
       {/* Trophy */}
-      <div className="text-8xl mb-8">
+      <div className="text-7xl mb-6">
         {percentage >= 80 ? "🏆" : percentage >= 50 ? "🎯" : "📚"}
       </div>
 
       {/* Title */}
-      <h1 className="text-4xl font-bold text-[var(--color-primary)] mb-4">
+      <h1
+        className="text-3xl font-bold mb-2"
+        style={{ color: "var(--color-primary)" }}
+      >
         {strings.moduleComplete.title}
       </h1>
 
-      <h2 className="text-2xl font-semibold text-[var(--color-text)] mb-2">
+      <h2
+        className="text-xl font-semibold mb-2"
+        style={{ color: "var(--color-text)" }}
+      >
         {mod.title}
       </h2>
 
-      <p className="text-lg text-[var(--color-text-muted)] mb-8 max-w-md">
+      <p
+        className="text-base mb-8 max-w-sm"
+        style={{ color: "var(--color-text-secondary)" }}
+      >
         {strings.moduleComplete.congratulations}
       </p>
 
       {/* Stats */}
-      <div className="bg-white border border-gray-200 rounded-xl px-8 py-6 mb-8 shadow-sm">
-        <div className="flex gap-12">
+      <div
+        className="rounded-xl mb-10"
+        style={{
+          background: "var(--color-bg-elevated)",
+          border: "1px solid var(--color-border)",
+          boxShadow: "var(--shadow-md)",
+          padding: "var(--space-lg) var(--space-2xl)",
+        }}
+      >
+        <div className="flex gap-14">
           <div className="text-center">
-            <p className="text-3xl font-bold text-[var(--color-accent)]">{totalScore}</p>
-            <p className="text-sm text-[var(--color-text-muted)]">{strings.moduleComplete.hits}</p>
+            <p className="text-3xl font-bold tabular-nums" style={{ color: "var(--color-accent)" }}>
+              {totalScore}
+            </p>
+            <p className="text-xs font-semibold uppercase tracking-wider mt-1" style={{ color: "var(--color-text-muted)" }}>
+              {strings.moduleComplete.hits}
+            </p>
           </div>
           <div className="text-center">
-            <p className="text-3xl font-bold text-[var(--color-primary)]">{totalExercises}</p>
-            <p className="text-sm text-[var(--color-text-muted)]">{strings.moduleComplete.exercises}</p>
+            <p className="text-3xl font-bold tabular-nums" style={{ color: "var(--color-primary)" }}>
+              {totalExercises}
+            </p>
+            <p className="text-xs font-semibold uppercase tracking-wider mt-1" style={{ color: "var(--color-text-muted)" }}>
+              {strings.moduleComplete.exercises}
+            </p>
           </div>
           <div className="text-center">
-            <p className="text-3xl font-bold text-green-600">{percentage}%</p>
-            <p className="text-sm text-[var(--color-text-muted)]">{strings.moduleComplete.performance}</p>
+            <p className="text-3xl font-bold tabular-nums" style={{ color: "var(--color-success)" }}>
+              {percentage}%
+            </p>
+            <p className="text-xs font-semibold uppercase tracking-wider mt-1" style={{ color: "var(--color-text-muted)" }}>
+              {strings.moduleComplete.performance}
+            </p>
           </div>
         </div>
       </div>
@@ -102,18 +131,26 @@ export function ModuleComplete() {
       <div className="flex gap-4">
         <button
           onClick={() => navigate(`/module/${moduleId}`)}
-          className="px-8 py-3 text-lg font-medium text-[var(--color-primary)]
-                     border-2 border-[var(--color-primary)] rounded-xl
-                     hover:bg-[var(--color-primary)] hover:text-white
-                     transition-colors cursor-pointer"
+          className="px-6 py-3 text-base font-semibold rounded-xl border-2
+                     transition-all duration-200 cursor-pointer
+                     hover:shadow-md active:scale-[0.98]"
+          style={{
+            color: "var(--color-primary)",
+            borderColor: "var(--color-primary)",
+            background: "transparent",
+          }}
         >
           {strings.moduleComplete.reviewLessons}
         </button>
         <button
           onClick={() => navigate("/")}
-          className="px-8 py-3 text-lg font-semibold text-white rounded-xl
-                     bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)]
-                     transition-colors shadow-lg cursor-pointer"
+          className="px-6 py-3 text-base font-semibold text-white rounded-xl
+                     transition-all duration-200 cursor-pointer
+                     hover:shadow-lg active:scale-[0.98]"
+          style={{
+            background: "linear-gradient(135deg, var(--color-accent), var(--color-accent-hover))",
+            boxShadow: "var(--shadow-md)",
+          }}
         >
           {strings.moduleComplete.backToHome}
         </button>

@@ -38,7 +38,6 @@ export function Lesson() {
     }
   }, [lessonId]);
 
-  // Keyboard navigation
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
       if (e.key === "Escape" && lesson) {
@@ -100,53 +99,79 @@ export function Lesson() {
   if (!lesson) {
     return (
       <div className="flex items-center justify-center h-full">
-        <p className="text-xl text-[var(--color-text-muted)]">
+        <p className="text-lg" style={{ color: "var(--color-text-muted)" }}>
           {strings.errors.contentLoadFailed}
         </p>
       </div>
     );
   }
 
-  // Calculate lesson position in module
   const moduleLessons = loadModuleLessons(lesson.moduleId);
   const lessonIndex = moduleLessons.findIndex((l) => l.id === lesson.id);
 
   return (
     <div className="h-full flex flex-col">
-      {/* Top bar */}
-      <header className="px-8 py-4 border-b border-gray-200 bg-white shrink-0">
-        <div className="flex items-center justify-between mb-3">
-          <button
-            onClick={() => navigate(`/module/${lesson.moduleId}`)}
-            className="text-[var(--color-primary-light)] text-base font-medium hover:underline cursor-pointer"
+      {/* Header */}
+      <header
+        className="shrink-0 border-b"
+        style={{
+          background: "var(--color-bg-elevated)",
+          borderColor: "var(--color-border)",
+          padding: "var(--space-md) var(--space-2xl)",
+        }}
+      >
+        <div className="max-w-xl mx-auto">
+          <div className="flex items-center justify-between mb-3">
+            <button
+              onClick={() => navigate(`/module/${lesson.moduleId}`)}
+              className="flex items-center gap-1.5 text-sm font-medium cursor-pointer
+                         transition-colors duration-150 hover:opacity-80"
+              style={{ color: "var(--color-primary-light)" }}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="m15 18-6-6 6-6" />
+              </svg>
+              {strings.navigation.back}
+            </button>
+
+            <span
+              className="text-xs font-semibold uppercase tracking-wider"
+              style={{ color: "var(--color-text-muted)" }}
+            >
+              {strings.lesson.lessonOf
+                .replace("{current}", String(lessonIndex + 1))
+                .replace("{total}", String(moduleLessons.length))}
+            </span>
+
+            <div className="w-16" />
+          </div>
+
+          <h1
+            className="text-xl font-bold text-center mb-3"
+            style={{ color: "var(--color-primary)" }}
           >
-            ← {strings.navigation.back}
-          </button>
-          <span className="text-sm text-[var(--color-text-muted)]">
-            {strings.lesson.lessonOf
-              .replace("{current}", String(lessonIndex + 1))
-              .replace("{total}", String(moduleLessons.length))}
-          </span>
-          <div className="w-16" />
+            {lesson.title}
+          </h1>
+
+          {(phase === "exercises" || phase === "completed") && (
+            <ProgressBar
+              current={completedExercises.size}
+              total={lesson.exercises.length}
+              label={strings.lesson.progress}
+            />
+          )}
         </div>
-        <h1 className="text-xl font-bold text-[var(--color-primary)] text-center mb-3">
-          {lesson.title}
-        </h1>
-        {/* Exercise progress (only show during exercises phase) */}
-        {(phase === "exercises" || phase === "completed") && (
-          <ProgressBar
-            current={completedExercises.size}
-            total={lesson.exercises.length}
-            label={strings.lesson.progress}
-          />
-        )}
       </header>
 
       {/* Content area */}
-      <div ref={scrollRef} className="flex-1 overflow-y-auto px-8 py-8">
-        <div className="max-w-2xl mx-auto">
+      <div
+        ref={scrollRef}
+        className="flex-1 overflow-y-auto"
+        style={{ padding: "var(--space-xl) var(--space-2xl)" }}
+      >
+        <div className="max-w-xl mx-auto">
           {/* Lesson content blocks */}
-          <div className="mb-8">
+          <div className="mb-10">
             {lesson.blocks.map((block, i) => (
               <LessonBlock key={i} block={block} />
             ))}
@@ -154,15 +179,22 @@ export function Lesson() {
 
           {/* Transition to exercises */}
           {phase === "content" && lesson.exercises.length > 0 && (
-            <div className="text-center py-8 border-t border-gray-200 animate-fade-in">
-              <p className="text-lg text-[var(--color-text-muted)] mb-4">
+            <div className="text-center py-10 animate-fade-in" style={{ borderTop: "1px solid var(--color-border)" }}>
+              <p
+                className="text-base mb-5"
+                style={{ color: "var(--color-text-secondary)" }}
+              >
                 {strings.lesson.practicePrompt}
               </p>
               <button
                 onClick={() => { setPhase("exercises"); scrollToTop(); }}
-                className="px-10 py-4 text-xl font-semibold text-white rounded-xl
-                           bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)]
-                           transition-colors shadow-lg cursor-pointer"
+                className="px-8 py-3.5 text-lg font-semibold text-white rounded-xl
+                           transition-all duration-200 cursor-pointer
+                           hover:shadow-lg active:scale-[0.98]"
+                style={{
+                  background: "linear-gradient(135deg, var(--color-accent), var(--color-accent-hover))",
+                  boxShadow: "var(--shadow-md)",
+                }}
               >
                 {strings.lesson.startExercises}
               </button>
@@ -171,42 +203,59 @@ export function Lesson() {
 
           {/* Exercises */}
           {(phase === "exercises" || phase === "completed") && (
-            <div className="border-t border-gray-200 pt-8 animate-fade-in">
-              <h2 className="text-2xl font-bold text-[var(--color-primary)] mb-6">
+            <div className="pt-8 animate-fade-in" style={{ borderTop: "1px solid var(--color-border)" }}>
+              <h2
+                className="text-xl font-bold mb-6"
+                style={{ color: "var(--color-primary)" }}
+              >
                 {strings.lesson.exercisesTitle}
               </h2>
-              {lesson.exercises.map((exercise, i) => (
-                <ExerciseCard
-                  key={exercise.id}
-                  exercise={exercise}
-                  index={i}
-                  onComplete={handleExerciseComplete}
-                />
-              ))}
+              <div className="flex flex-col gap-5">
+                {lesson.exercises.map((exercise, i) => (
+                  <ExerciseCard
+                    key={exercise.id}
+                    exercise={exercise}
+                    index={i}
+                    onComplete={handleExerciseComplete}
+                  />
+                ))}
+              </div>
             </div>
           )}
 
           {/* Completion */}
           {phase === "completed" && (
-            <div className="text-center py-8 border-t border-gray-200 mt-8 animate-fade-in">
-              <div className="bg-green-50 border border-green-300 rounded-xl px-8 py-6 inline-block">
-                <p className="text-2xl font-bold text-green-700 mb-2">
+            <div className="text-center py-10 mt-8 animate-fade-in" style={{ borderTop: "1px solid var(--color-border)" }}>
+              <div
+                className="inline-block rounded-xl"
+                style={{
+                  background: "var(--color-success-light)",
+                  border: "1px solid var(--color-success-border)",
+                  padding: "var(--space-lg) var(--space-2xl)",
+                }}
+              >
+                <p className="text-xl font-bold mb-1.5" style={{ color: "var(--color-success)" }}>
                   {strings.lesson.lessonComplete}
                 </p>
-                <p className="text-lg text-[var(--color-text)]">
+                <p className="text-base" style={{ color: "var(--color-text)" }}>
                   {strings.lesson.scoreMessage
                     .replace("{score}", String(score))
                     .replace("{total}", String(lesson.exercises.length))}
                 </p>
               </div>
-              <div className="mt-6">
+              <div className="mt-8">
                 <button
                   onClick={handleNextLesson}
-                  className="px-10 py-4 text-xl font-semibold text-white rounded-xl
-                             bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)]
-                             transition-colors shadow-lg cursor-pointer"
+                  className="group px-8 py-3.5 text-lg font-semibold text-white rounded-xl
+                             transition-all duration-200 cursor-pointer
+                             hover:shadow-lg active:scale-[0.98]"
+                  style={{
+                    background: "linear-gradient(135deg, var(--color-accent), var(--color-accent-hover))",
+                    boxShadow: "var(--shadow-md)",
+                  }}
                 >
-                  {strings.lesson.nextLesson} →
+                  {strings.lesson.nextLesson}
+                  <span className="ml-2 inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
                 </button>
               </div>
             </div>
@@ -214,7 +263,6 @@ export function Lesson() {
         </div>
       </div>
 
-      {/* Tutor — always available */}
       <TutorButton
         lessonTitle={lesson.title}
         lessonSummary={lesson.description}

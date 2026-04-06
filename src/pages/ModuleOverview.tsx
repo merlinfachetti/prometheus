@@ -45,7 +45,7 @@ export function ModuleOverview() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-full">
-        <p className="text-xl text-[var(--color-text-muted)]">Carregando...</p>
+        <p className="text-lg" style={{ color: "var(--color-text-muted)" }}>Carregando...</p>
       </div>
     );
   }
@@ -53,7 +53,7 @@ export function ModuleOverview() {
   if (!mod) {
     return (
       <div className="flex items-center justify-center h-full">
-        <p className="text-xl text-[var(--color-text-muted)]">
+        <p className="text-lg" style={{ color: "var(--color-text-muted)" }}>
           {strings.errors.contentLoadFailed}
         </p>
       </div>
@@ -69,20 +69,40 @@ export function ModuleOverview() {
   return (
     <div className="h-full flex flex-col">
       {/* Header */}
-      <header className="px-8 py-6 border-b border-gray-200 bg-white shrink-0">
-        <div className="max-w-2xl mx-auto">
+      <header
+        className="shrink-0 border-b"
+        style={{
+          background: "var(--color-bg-elevated)",
+          borderColor: "var(--color-border)",
+          padding: "var(--space-lg) var(--space-2xl)",
+        }}
+      >
+        <div className="max-w-xl mx-auto">
           <button
             onClick={() => navigate("/")}
-            className="text-[var(--color-primary-light)] text-lg font-medium hover:underline cursor-pointer mb-4 block"
+            className="flex items-center gap-1.5 text-sm font-medium mb-5 cursor-pointer
+                       transition-colors duration-150 hover:opacity-80"
+            style={{ color: "var(--color-primary-light)" }}
           >
-            ← {strings.navigation.home}
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="m15 18-6-6 6-6" />
+            </svg>
+            {strings.navigation.home}
           </button>
-          <h1 className="text-3xl font-bold text-[var(--color-primary)] mb-2">
+
+          <h1
+            className="text-2xl font-bold mb-1.5"
+            style={{ color: "var(--color-primary)" }}
+          >
             {mod.title}
           </h1>
-          <p className="text-lg text-[var(--color-text-muted)] mb-4">
+          <p
+            className="text-sm mb-5 leading-relaxed"
+            style={{ color: "var(--color-text-secondary)" }}
+          >
             {mod.description}
           </p>
+
           <ProgressBar
             current={completedCount}
             total={lessons.length}
@@ -92,12 +112,14 @@ export function ModuleOverview() {
       </header>
 
       {/* Lesson list */}
-      <div className="flex-1 overflow-y-auto px-8 py-8">
-        <div className="max-w-2xl mx-auto space-y-4">
+      <div
+        className="flex-1 overflow-y-auto"
+        style={{ padding: "var(--space-lg) var(--space-2xl)" }}
+      >
+        <div className="max-w-xl mx-auto flex flex-col gap-3">
           {lessons.map((lesson, index) => {
             const isCompleted = completedIds.has(lesson.id);
             const isCurrent = index === firstUncompletedIndex;
-            // Lock lessons that are ahead of the first uncompleted (progressive blocking)
             const isLocked = index > firstUncompletedIndex;
 
             return (

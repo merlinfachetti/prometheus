@@ -1,21 +1,69 @@
 @import "tailwindcss";
 
 :root {
-  --color-primary: #1e3a5f;
-  --color-primary-light: #2a5a8f;
-  --color-accent: #e8a838;
-  --color-accent-hover: #d4952e;
-  --color-bg: #f8f6f2;
-  --color-bg-card: #ffffff;
-  --color-text: #1a1a2e;
-  --color-text-muted: #6b7280;
-  --color-success: #22c55e;
-  --color-error: #ef4444;
+  /* Primary — deep navy, conveys trust and knowledge */
+  --color-primary: #0f2b46;
+  --color-primary-light: #1a4971;
+  --color-primary-lighter: #245d8c;
 
-  font-family: "Inter", system-ui, -apple-system, sans-serif;
-  line-height: 1.6;
+  /* Accent — warm amber gold */
+  --color-accent: #d4930d;
+  --color-accent-hover: #b87d0a;
+  --color-accent-light: #fef3d1;
+
+  /* Surface & background */
+  --color-bg: #f5f3ef;
+  --color-bg-elevated: #ffffff;
+  --color-bg-subtle: #eae7e1;
+
+  /* Text */
+  --color-text: #1c1917;
+  --color-text-secondary: #57534e;
+  --color-text-muted: #a8a29e;
+
+  /* Borders */
+  --color-border: #e7e5e4;
+  --color-border-strong: #d6d3d1;
+
+  /* Semantic */
+  --color-success: #16a34a;
+  --color-success-light: #f0fdf4;
+  --color-success-border: #bbf7d0;
+  --color-error: #dc2626;
+  --color-error-light: #fef2f2;
+  --color-error-border: #fecaca;
+  --color-info: #2563eb;
+  --color-info-light: #eff6ff;
+  --color-info-border: #bfdbfe;
+
+  /* Spacing scale */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.08), 0 4px 8px rgba(0, 0, 0, 0.04);
+
+  /* Typography */
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.65;
   color: var(--color-text);
   background-color: var(--color-bg);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 * {
@@ -32,12 +80,11 @@ body,
   overflow: hidden;
 }
 
-/* Large, readable text for accessibility */
 body {
-  font-size: 18px;
+  font-size: 17px;
 }
 
-/* Prevent text selection on UI elements (feels more native) */
+/* Native feel */
 button,
 nav,
 header {
@@ -45,66 +92,66 @@ header {
   -webkit-user-select: none;
 }
 
-/* Smooth focus styles for accessibility */
+/* Focus */
 :focus-visible {
-  outline: 3px solid var(--color-accent);
+  outline: 2px solid var(--color-accent);
   outline-offset: 2px;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
 }
 
-/* Exercise feedback animation */
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-strong);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+/* ─── Animations ─────────────────────────────── */
+
 @keyframes feedback-enter {
-  from {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
-
 .animate-feedback {
   animation: feedback-enter 0.3s ease-out;
 }
 
-/* Subtle pulse for correct answer */
 @keyframes correct-pulse {
-  0%, 100% {
-    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
-  }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.25); }
+  50%      { box-shadow: 0 0 0 10px rgba(22, 163, 74, 0); }
 }
-
 .animate-correct {
-  animation: correct-pulse 0.6s ease-out;
+  animation: correct-pulse 0.7s ease-out;
 }
 
-/* Phase transition fade-in */
 @keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
-
 .animate-fade-in {
   animation: fade-in-up 0.4s ease-out;
 }
 
-/* Progress bar fill animation */
-@keyframes progress-fill {
-  from {
-    width: 0%;
-  }
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.animate-scale-in {
+  animation: scale-in 0.3s ease-out;
 }
 
-.animate-progress {
-  animation: progress-fill 0.5s ease-out;
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(100%); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-slide-up {
+  animation: slide-up 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }

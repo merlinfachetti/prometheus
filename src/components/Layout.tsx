@@ -11,24 +11,33 @@ export function Layout({ children }: LayoutProps) {
   const isSettings = location.pathname === "/settings";
 
   return (
-    <div className="flex flex-col h-full bg-[var(--color-bg)]">
-      {/* Settings gear — top-right corner, always visible except on settings page */}
+    <div className="flex flex-col h-full" style={{ background: "var(--color-bg)" }}>
+      {/* Settings gear */}
       {!isSettings && (
         <button
           onClick={() => navigate("/settings")}
-          className="fixed top-4 right-4 z-50 w-10 h-10 flex items-center justify-center
-                     text-[var(--color-text-muted)] hover:text-[var(--color-primary)]
-                     transition-colors cursor-pointer rounded-full hover:bg-white/80"
+          className="fixed top-4 right-4 z-50 w-9 h-9 flex items-center justify-center
+                     transition-all duration-200 cursor-pointer rounded-lg
+                     hover:shadow-sm active:scale-95"
+          style={{ color: "var(--color-text-muted)", background: "transparent" }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.color = "var(--color-primary)";
+            e.currentTarget.style.background = "var(--color-bg-subtle)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.color = "var(--color-text-muted)";
+            e.currentTarget.style.background = "transparent";
+          }}
           aria-label="Settings"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="22"
-            height="22"
+            width="20"
+            height="20"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            strokeWidth="2"
+            strokeWidth="1.5"
             strokeLinecap="round"
             strokeLinejoin="round"
           >

@@ -11,18 +11,32 @@ export function ProgressBar({ current, total, label }: ProgressBarProps) {
     <div className="w-full">
       {label && (
         <div className="flex justify-between items-center mb-2">
-          <span className="text-sm font-medium text-[var(--color-text-muted)]">
+          <span
+            className="text-xs font-semibold uppercase tracking-wider"
+            style={{ color: "var(--color-text-muted)" }}
+          >
             {label}
           </span>
-          <span className="text-sm font-semibold text-[var(--color-primary)]">
+          <span
+            className="text-xs font-bold tabular-nums"
+            style={{ color: "var(--color-primary)" }}
+          >
             {current}/{total}
           </span>
         </div>
       )}
-      <div className="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+      <div
+        className="w-full h-2 rounded-full overflow-hidden"
+        style={{ background: "var(--color-bg-subtle)" }}
+      >
         <div
-          className="h-full bg-[var(--color-accent)] rounded-full transition-all duration-500 ease-out"
-          style={{ width: `${percentage}%` }}
+          className="h-full rounded-full transition-all duration-500 ease-out"
+          style={{
+            width: `${percentage}%`,
+            background: percentage === 100
+              ? "var(--color-success)"
+              : "linear-gradient(90deg, var(--color-accent), var(--color-accent-hover))",
+          }}
         />
       </div>
     </div>
