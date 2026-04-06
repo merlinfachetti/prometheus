@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { loadLesson } from "../services/contentLoader";
+import { loadLesson, loadModule, loadModuleLessons } from "../services/contentLoader";
+import { saveProgress } from "../services/progress";
 import { useI18n } from "../hooks/useI18n";
 import { LessonBlock } from "../components/LessonBlock";
 import { ExerciseCard } from "../components/ExerciseCard";
@@ -16,12 +17,18 @@ export function Lesson() {
   const [phase, setPhase] = useState<LessonPhase>("content");
   const [completedExercises, setCompletedExercises] = useState<Set<string>>(new Set());
   const [score, setScore] = useState(0);
+  const [progressSaved, setProgressSaved] = useState(false);
 
   useEffect(() => {
     if (!lessonId) return;
     const loaded = loadLesson(lessonId);
     if (loaded) {
       setLesson(loaded);
+      // Reset state when navigating to a new lesson
+      setPhase("content");
+      setCompletedExercises(new Set());
+      setScore(0);
+      setProgressSaved(false);
     }
   }, [lessonId]);
 
@@ -35,11 +42,41 @@ export function Lesson() {
   const allExercisesDone =
     lesson !== null && completedExercises.size === lesson.exercises.length;
 
+  // Save progress and transition to completed phase
   useEffect(() => {
-    if (allExercisesDone && phase === "exercises") {
+    if (allExercisesDone && phase === "exercises" && lesson && !progressSaved) {
       setPhase("completed");
+      setProgressSaved(true);
+      saveProgress(
+        lesson.id,
+        lesson.moduleId,
+        score,
+        lesson.exercises.length,
+        true
+      ).catch((err) => console.error("Failed to save progress:", err));
     }
-  }, [allExercisesDone, phase]);
+  }, [allExercisesDone, phase, lesson, score, progressSaved]);
+
+  function handleNextLesson() {
+    if (!lesson) return;
+
+    const mod = loadModule(lesson.moduleId);
+    if (!mod) {
+      navigate("/");
+      return;
+    }
+
+    const lessons = loadModuleLessons(lesson.moduleId);
+    const currentIndex = lessons.findIndex((l) => l.id === lesson.id);
+    const nextLesson = lessons[currentIndex + 1];
+
+    if (nextLesson) {
+      navigate(`/lesson/${nextLesson.id}`);
+    } else {
+      // Module completed — go home
+      navigate("/");
+    }
+  }
 
   if (!lesson) {
     return (
@@ -124,12 +161,12 @@ export function Lesson() {
               </div>
               <div className="mt-6">
                 <button
-                  onClick={() => navigate("/")}
+                  onClick={handleNextLesson}
                   className="px-10 py-4 text-xl font-semibold text-white rounded-xl
                              bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)]
                              transition-colors shadow-lg cursor-pointer"
                 >
-                  {strings.navigation.continue}
+                  Próxima Aula →
                 </button>
               </div>
             </div>
