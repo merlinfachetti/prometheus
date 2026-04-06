@@ -1,73 +1,95 @@
-# React + TypeScript + Vite
+# Prometheus
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Plataforma desktop de aprendizado de Física para autodidatas. Offline-first, progressiva, sem dependência de internet.
 
-Currently, two official plugins are available:
+## Visão Geral
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Prometheus é uma aplicação desktop construída com Tauri v2 que guia o usuário através de módulos de Física com lições progressivas, exercícios interativos e acompanhamento de progresso local. O público-alvo são adultos não-técnicos (50+) que querem aprender Física no próprio ritmo.
 
-## React Compiler
+## Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Frontend:** React 19, TypeScript 6, Tailwind CSS v4, Vite 8
+- **Backend:** Rust (Tauri v2)
+- **Persistência:** SQLite via `tauri-plugin-sql`
+- **Conteúdo:** JSON estático bundled em build time (`import.meta.glob`)
 
-## Expanding the ESLint configuration
+## Arquitetura
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+prometheus/
+├── content/
+│   └── locales/
+│       ├── pt-BR/          # Conteúdo em português
+│       │   ├── ui.json     # Strings da interface
+│       │   └── modules/
+│       │       └── kinematics/
+│       │           ├── module.json
+│       │           └── kinematics-*.json  # 8 lições
+│       └── en/             # Conteúdo em inglês
+│           └── ui.json
+├── src/
+│   ├── components/         # UI components (Layout, ExerciseCard, LessonBlock, etc.)
+│   ├── pages/              # Welcome, ModuleOverview, Lesson, ModuleComplete, Settings
+│   ├── services/           # contentLoader, progress (SQLite), i18n
+│   ├── hooks/              # useI18n
+│   ├── types/              # content.ts, i18n.ts
+│   └── styles/             # index.css (design tokens + animations)
+├── src-tauri/
+│   ├── src/
+│   │   ├── lib.rs          # Tauri builder, SQL plugin, migrations
+│   │   └── commands.rs     # Rust commands
+│   └── tauri.conf.json
+└── package.json
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Decisões de design
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **Código em inglês, conteúdo em PT-BR.** O i18n é separado do código — strings de UI vivem em `content/locales/{lang}/ui.json`, conteúdo pedagógico em JSONs por módulo.
+- **Offline-first.** Todo conteúdo é importado via `import.meta.glob` com eager loading. Nenhuma requisição de rede em runtime.
+- **Progressão bloqueada.** Aulas são desbloqueadas sequencialmente — o usuário só avança após completar a anterior.
+- **SQLite local.** Progresso salvo com upsert que preserva a melhor nota. Reset disponível via Settings.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Pré-requisitos
+
+- [Node.js](https://nodejs.org/) >= 22
+- [Rust](https://rustup.rs/) (stable)
+- Tauri v2 system dependencies ([docs](https://v2.tauri.app/start/prerequisites/))
+
+## Setup
+
+```bash
+# Instalar dependências
+npm install
+
+# Rodar em modo dev (abre a janela Tauri)
+npm run tauri dev
+
+# Build para produção
+npm run tauri build
 ```
+
+## Módulo atual: Cinemática
+
+8 lições cobrindo o conteúdo fundamental:
+
+1. O que é Movimento
+2. Posição e Referencial
+3. Velocidade
+4. Velocidade Média
+5. Movimento Retilíneo Uniforme (MRU)
+6. Aceleração
+7. Movimento Retilíneo Uniformemente Variado (MRUV)
+8. Queda Livre
+
+Total: 30 exercícios com feedback imediato, dicas e explicações.
+
+## Roadmap
+
+- **Fase 1 (atual):** Core system — app setup, renderização de lições, progresso
+- **Fase 2:** Motor de aprendizado — exercícios avançados, sistema de feedback
+- **Fase 3:** Tutor — sistema de ajuda contextual expandido
+- **Fase 4:** Expansão — mais módulos e conteúdo
+
+## Licença
+
+Proprietário. Todos os direitos reservados.
