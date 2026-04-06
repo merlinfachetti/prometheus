@@ -1,0 +1,97 @@
+{
+  "id": "kinematics-04-average-velocity",
+  "moduleId": "kinematics",
+  "order": 4,
+  "title": "Calculando Velocidade Média",
+  "description": "Pratique o cálculo de velocidade média com problemas reais.",
+  "blocks": [
+    {
+      "type": "text",
+      "content": "Na aula anterior, aprendemos que velocidade média é o deslocamento dividido pelo tempo. Agora vamos aplicar esse conceito em situações mais completas."
+    },
+    {
+      "type": "formula",
+      "content": "V_m = ΔS / Δt = (S_final - S_inicial) / (t_final - t_inicial)"
+    },
+    {
+      "type": "text",
+      "content": "Quando temos posição inicial, posição final, tempo inicial e tempo final, usamos a fórmula completa. Vamos ver na prática."
+    },
+    {
+      "type": "example",
+      "content": "Um carro parte do km 20 às 8h e chega ao km 200 às 10h. Velocidade média = (200 - 20) / (10 - 8) = 180 / 2 = 90 km/h."
+    },
+    {
+      "type": "highlight",
+      "content": "Atenção ao sinal! Se o deslocamento for negativo (o objeto voltou), a velocidade média também será negativa. Isso indica o sentido do movimento."
+    },
+    {
+      "type": "example",
+      "content": "Um carro vai do km 100 ao km 40 em 2 horas. ΔS = 40 - 100 = -60 km. V_m = -60 / 2 = -30 km/h. O sinal negativo indica que ele voltou no sentido contrário."
+    },
+    {
+      "type": "text",
+      "content": "Em problemas com trechos diferentes, cuidado: não basta fazer a média das velocidades! Você precisa dividir o deslocamento total pelo tempo total."
+    },
+    {
+      "type": "example",
+      "content": "Um carro percorre 120 km a 60 km/h e depois 120 km a 120 km/h. Tempo trecho 1: 120/60 = 2h. Tempo trecho 2: 120/120 = 1h. Velocidade média total = 240 km / 3h = 80 km/h. (Não é 90 km/h, que seria a média simples!)"
+    },
+    {
+      "type": "highlight",
+      "content": "Velocidade média total = deslocamento total / tempo total. Nunca faça a média aritmética das velocidades."
+    }
+  ],
+  "exercises": [
+    {
+      "id": "ex-04-01",
+      "type": "multiple_choice",
+      "question": "Um caminhão parte do km 50 às 14h e chega ao km 350 às 18h. Qual a velocidade média?",
+      "options": [
+        { "id": "a", "text": "100 km/h" },
+        { "id": "b", "text": "75 km/h" },
+        { "id": "c", "text": "87,5 km/h" },
+        { "id": "d", "text": "300 km/h" }
+      ],
+      "correctAnswer": "b",
+      "explanation": "ΔS = 350 - 50 = 300 km. Δt = 18 - 14 = 4h. V_m = 300 / 4 = 75 km/h.",
+      "hint": "Calcule o deslocamento (posição final - inicial) e divida pelo tempo (hora final - inicial)."
+    },
+    {
+      "id": "ex-04-02",
+      "type": "multiple_choice",
+      "question": "Um carro percorre 100 km a 50 km/h e depois mais 100 km a 100 km/h. Qual a velocidade média total?",
+      "options": [
+        { "id": "a", "text": "75 km/h" },
+        { "id": "b", "text": "66,7 km/h" },
+        { "id": "c", "text": "80 km/h" },
+        { "id": "d", "text": "25 km/h" }
+      ],
+      "correctAnswer": "b",
+      "explanation": "Tempo trecho 1: 100/50 = 2h. Tempo trecho 2: 100/100 = 1h. Total: 200 km em 3h. V_m = 200/3 ≈ 66,7 km/h. A média das velocidades (75) estaria errada!",
+      "hint": "Calcule o tempo de cada trecho separadamente, depois use deslocamento total / tempo total."
+    },
+    {
+      "id": "ex-04-03",
+      "type": "true_false",
+      "question": "A velocidade média de um percurso de ida e volta ao mesmo ponto é sempre zero.",
+      "correctAnswer": "true",
+      "explanation": "Se o objeto volta ao ponto de partida, o deslocamento (ΔS) é zero, porque posição final = posição inicial. Logo, V_m = 0 / Δt = 0. A distância percorrida não é zero, mas o deslocamento sim.",
+      "hint": "Lembre-se: deslocamento depende só da posição inicial e final."
+    },
+    {
+      "id": "ex-04-04",
+      "type": "multiple_choice",
+      "question": "Um ciclista sai da posição 5 km às 9h00, chega à posição 35 km às 10h30. Qual a velocidade média?",
+      "options": [
+        { "id": "a", "text": "30 km/h" },
+        { "id": "b", "text": "20 km/h" },
+        { "id": "c", "text": "23,3 km/h" },
+        { "id": "d", "text": "35 km/h" }
+      ],
+      "correctAnswer": "b",
+      "explanation": "ΔS = 35 - 5 = 30 km. Δt = 10h30 - 9h00 = 1,5h. V_m = 30 / 1,5 = 20 km/h.",
+      "hint": "Converta 1h30min para 1,5 horas antes de calcular."
+    }
+  ]
+}

@@ -5,6 +5,9 @@
   "order": 1,
   "lessons": [
     "kinematics-01-what-is-motion",
-    "kinematics-02-position-and-reference"
+    "kinematics-02-position-and-reference",
+    "kinematics-03-velocity",
+    "kinematics-04-average-velocity",
+    "kinematics-05-uniform-motion"
   ]
 }

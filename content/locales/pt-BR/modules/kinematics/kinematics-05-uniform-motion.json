@@ -1,0 +1,105 @@
+{
+  "id": "kinematics-05-uniform-motion",
+  "moduleId": "kinematics",
+  "order": 5,
+  "title": "Movimento Uniforme (MRU)",
+  "description": "O caso mais simples: velocidade constante em linha reta.",
+  "blocks": [
+    {
+      "type": "text",
+      "content": "Até agora, falamos de velocidade média — um valor geral para todo o percurso. Mas e se um objeto mantiver a mesma velocidade durante todo o movimento?"
+    },
+    {
+      "type": "highlight",
+      "content": "Movimento Uniforme (MRU) é quando um objeto se move em linha reta com velocidade constante. Não acelera nem freia."
+    },
+    {
+      "type": "text",
+      "content": "No MRU, a velocidade instantânea (a velocidade em cada momento) é igual à velocidade média. Isso simplifica muito os cálculos."
+    },
+    {
+      "type": "text",
+      "content": "A equação que descreve a posição de um objeto em MRU ao longo do tempo é chamada de função horária da posição:"
+    },
+    {
+      "type": "formula",
+      "content": "S = S₀ + V · t"
+    },
+    {
+      "type": "text",
+      "content": "Onde S é a posição no instante t, S₀ é a posição inicial (onde o objeto estava em t = 0) e V é a velocidade constante."
+    },
+    {
+      "type": "example",
+      "content": "Um carro parte do km 10 com velocidade de 60 km/h. Onde estará após 3 horas? S = 10 + 60 × 3 = 10 + 180 = 190 km. Estará no km 190."
+    },
+    {
+      "type": "text",
+      "content": "Se a velocidade for negativa, significa que o objeto se move no sentido contrário ao que definimos como positivo."
+    },
+    {
+      "type": "example",
+      "content": "Um trem parte do km 200 com velocidade de -50 km/h (voltando). Após 2 horas: S = 200 + (-50) × 2 = 200 - 100 = 100 km. Ele está no km 100."
+    },
+    {
+      "type": "highlight",
+      "content": "No MRU, o gráfico S × t é uma reta. A inclinação (coeficiente angular) dessa reta é a velocidade."
+    },
+    {
+      "type": "text",
+      "content": "Se a reta sobe, velocidade positiva. Se desce, velocidade negativa. Se é horizontal, o objeto está parado."
+    }
+  ],
+  "exercises": [
+    {
+      "id": "ex-05-01",
+      "type": "multiple_choice",
+      "question": "Um carro está no km 20 e se move a 80 km/h em MRU. Qual sua posição após 2 horas?",
+      "options": [
+        { "id": "a", "text": "100 km" },
+        { "id": "b", "text": "160 km" },
+        { "id": "c", "text": "180 km" },
+        { "id": "d", "text": "200 km" }
+      ],
+      "correctAnswer": "c",
+      "explanation": "S = S₀ + V × t = 20 + 80 × 2 = 20 + 160 = 180 km.",
+      "hint": "Use S = S₀ + V · t"
+    },
+    {
+      "id": "ex-05-02",
+      "type": "multiple_choice",
+      "question": "Um objeto se move em MRU. Em t = 0 está na posição 100 m. Em t = 5s está na posição 50 m. Qual a velocidade?",
+      "options": [
+        { "id": "a", "text": "10 m/s" },
+        { "id": "b", "text": "-10 m/s" },
+        { "id": "c", "text": "50 m/s" },
+        { "id": "d", "text": "-50 m/s" }
+      ],
+      "correctAnswer": "b",
+      "explanation": "S = S₀ + V × t → 50 = 100 + V × 5 → V × 5 = -50 → V = -10 m/s. O sinal negativo indica que o objeto se move no sentido contrário.",
+      "hint": "Substitua os valores na fórmula e isole V."
+    },
+    {
+      "id": "ex-05-03",
+      "type": "true_false",
+      "question": "No Movimento Uniforme, a aceleração é zero.",
+      "correctAnswer": "true",
+      "explanation": "Correto! No MRU a velocidade é constante, o que significa que não há aceleração (a aceleração é a variação da velocidade). Se houvesse aceleração, a velocidade mudaria e não seria mais MRU.",
+      "hint": "Se a velocidade não muda, o que podemos dizer sobre a aceleração?"
+    },
+    {
+      "id": "ex-05-04",
+      "type": "multiple_choice",
+      "question": "Dois carros partem ao mesmo tempo. Carro A: S = 10 + 60t. Carro B: S = 100 + 40t. Em que instante eles se encontram?",
+      "options": [
+        { "id": "a", "text": "t = 2h" },
+        { "id": "b", "text": "t = 4,5h" },
+        { "id": "c", "text": "t = 5h" },
+        { "id": "d", "text": "Nunca se encontram" }
+      ],
+      "correctAnswer": "b",
+      "explanation": "No encontro, S_A = S_B: 10 + 60t = 100 + 40t → 20t = 90 → t = 4,5h. Verificando: S_A = 10 + 60×4,5 = 280 km. S_B = 100 + 40×4,5 = 280 km. Correto!",
+      "hint": "Iguale as duas equações de posição e resolva para t."
+    }
+  ]
+}

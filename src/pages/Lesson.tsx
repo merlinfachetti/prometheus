@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { loadLesson, loadModule, loadModuleLessons } from "../services/contentLoader";
 import { saveProgress } from "../services/progress";
 import { useI18n } from "../hooks/useI18n";
 import { LessonBlock } from "../components/LessonBlock";
 import { ExerciseCard } from "../components/ExerciseCard";
+import { ProgressBar } from "../components/ProgressBar";
+import { TutorButton } from "../components/TutorButton";
 import type { Lesson as LessonType } from "../types/content";
 
 type LessonPhase = "content" | "exercises" | "completed";
@@ -24,13 +26,27 @@ export function Lesson() {
     const loaded = loadLesson(lessonId);
     if (loaded) {
       setLesson(loaded);
-      // Reset state when navigating to a new lesson
       setPhase("content");
       setCompletedExercises(new Set());
       setScore(0);
       setProgressSaved(false);
     }
   }, [lessonId]);
+
+  // Keyboard navigation
+  const handleKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === "Escape" && lesson) {
+        navigate(`/module/${lesson.moduleId}`);
+      }
+    },
+    [navigate, lesson]
+  );
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [handleKeyDown]);
 
   function handleExerciseComplete(exerciseId: string, correct: boolean) {
     setCompletedExercises((prev) => new Set(prev).add(exerciseId));
@@ -42,7 +58,6 @@ export function Lesson() {
   const allExercisesDone =
     lesson !== null && completedExercises.size === lesson.exercises.length;
 
-  // Save progress and transition to completed phase
   useEffect(() => {
     if (allExercisesDone && phase === "exercises" && lesson && !progressSaved) {
       setPhase("completed");
@@ -73,8 +88,7 @@ export function Lesson() {
     if (nextLesson) {
       navigate(`/lesson/${nextLesson.id}`);
     } else {
-      // Module completed — go home
-      navigate("/");
+      navigate(`/module/${lesson.moduleId}`);
     }
   }
 
@@ -88,20 +102,37 @@ export function Lesson() {
     );
   }
 
+  // Calculate lesson position in module
+  const moduleLessons = loadModuleLessons(lesson.moduleId);
+  const lessonIndex = moduleLessons.findIndex((l) => l.id === lesson.id);
+
   return (
     <div className="h-full flex flex-col">
       {/* Top bar */}
-      <header className="flex items-center justify-between px-8 py-4 border-b border-gray-200 bg-white shrink-0">
-        <button
-          onClick={() => navigate(lesson ? `/module/${lesson.moduleId}` : "/")}
-          className="text-[var(--color-primary-light)] text-lg font-medium hover:underline cursor-pointer"
-        >
-          ← {strings.navigation.home}
-        </button>
-        <h1 className="text-xl font-bold text-[var(--color-primary)]">
+      <header className="px-8 py-4 border-b border-gray-200 bg-white shrink-0">
+        <div className="flex items-center justify-between mb-3">
+          <button
+            onClick={() => navigate(`/module/${lesson.moduleId}`)}
+            className="text-[var(--color-primary-light)] text-base font-medium hover:underline cursor-pointer"
+          >
+            ← {strings.navigation.back}
+          </button>
+          <span className="text-sm text-[var(--color-text-muted)]">
+            Aula {lessonIndex + 1} de {moduleLessons.length}
+          </span>
+          <div className="w-16" />
+        </div>
+        <h1 className="text-xl font-bold text-[var(--color-primary)] text-center mb-3">
           {lesson.title}
         </h1>
-        <div className="w-20" />
+        {/* Exercise progress (only show during exercises phase) */}
+        {(phase === "exercises" || phase === "completed") && (
+          <ProgressBar
+            current={completedExercises.size}
+            total={lesson.exercises.length}
+            label={strings.lesson.progress}
+          />
+        )}
       </header>
 
       {/* Content area */}
@@ -173,6 +204,12 @@ export function Lesson() {
           )}
         </div>
       </div>
+
+      {/* Tutor — always available */}
+      <TutorButton
+        lessonTitle={lesson.title}
+        lessonSummary={lesson.description}
+      />
     </div>
   );
 }

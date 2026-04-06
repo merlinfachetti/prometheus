@@ -1,0 +1,83 @@
+{
+  "id": "kinematics-06-acceleration",
+  "moduleId": "kinematics",
+  "order": 6,
+  "title": "Aceleração: Quando a Velocidade Muda",
+  "description": "Entenda o que acontece quando um objeto acelera ou freia.",
+  "blocks": [
+    {
+      "type": "text",
+      "content": "Até agora, estudamos o MRU — movimento com velocidade constante. Mas no mundo real, as coisas aceleram e freiam o tempo todo."
+    },
+    {
+      "type": "text",
+      "content": "Quando você pisa no acelerador de um carro, a velocidade aumenta. Quando pisa no freio, a velocidade diminui. Essa variação da velocidade ao longo do tempo é o que chamamos de aceleração."
+    },
+    {
+      "type": "highlight",
+      "content": "Aceleração é a taxa de variação da velocidade no tempo: quanto a velocidade muda a cada segundo."
+    },
+    {
+      "type": "formula",
+      "content": "a = ΔV / Δt = (V_final - V_inicial) / (t_final - t_inicial)"
+    },
+    {
+      "type": "text",
+      "content": "A unidade de aceleração no SI é metros por segundo ao quadrado (m/s²). Isso significa: a cada segundo, a velocidade muda tantos m/s."
+    },
+    {
+      "type": "example",
+      "content": "Um carro parte do repouso (V = 0) e atinge 20 m/s em 10 segundos. Sua aceleração é: a = (20 - 0) / (10 - 0) = 2 m/s². Ou seja, a cada segundo, sua velocidade aumenta 2 m/s."
+    },
+    {
+      "type": "highlight",
+      "content": "Aceleração positiva: o objeto está ficando mais rápido no sentido positivo. Aceleração negativa (desaceleração): o objeto está freando."
+    },
+    {
+      "type": "example",
+      "content": "Um carro a 30 m/s freia e para em 6 segundos. a = (0 - 30) / 6 = -5 m/s². O sinal negativo indica que ele está desacelerando."
+    },
+    {
+      "type": "text",
+      "content": "Cuidado: aceleração negativa não significa que o objeto está lento. Um foguete pode ter aceleração negativa e ainda estar a milhares de km/h — ele está apenas diminuindo a velocidade."
+    }
+  ],
+  "exercises": [
+    {
+      "id": "ex-06-01",
+      "type": "multiple_choice",
+      "question": "Um carro vai de 0 a 100 km/h em 10 segundos. Qual é a aceleração média em m/s²?",
+      "options": [
+        { "id": "a", "text": "10 m/s²" },
+        { "id": "b", "text": "2,78 m/s²" },
+        { "id": "c", "text": "27,8 m/s²" },
+        { "id": "d", "text": "100 m/s²" }
+      ],
+      "correctAnswer": "b",
+      "explanation": "Primeiro, converta: 100 km/h ÷ 3,6 = 27,8 m/s. Depois: a = (27,8 - 0) / 10 = 2,78 m/s².",
+      "hint": "Converta km/h para m/s antes de calcular (divida por 3,6)."
+    },
+    {
+      "id": "ex-06-02",
+      "type": "true_false",
+      "question": "Se a aceleração de um objeto é zero, ele está necessariamente parado.",
+      "correctAnswer": "false",
+      "explanation": "Falso! Aceleração zero significa que a velocidade não está mudando — o objeto pode estar em MRU (velocidade constante). Um carro a 120 km/h em uma rodovia reta, sem acelerar nem frear, tem aceleração zero mas está em movimento.",
+      "hint": "Aceleração mede mudança de velocidade, não a velocidade em si."
+    },
+    {
+      "id": "ex-06-03",
+      "type": "multiple_choice",
+      "question": "Um ciclista a 12 m/s freia até parar em 4 segundos. Qual a aceleração?",
+      "options": [
+        { "id": "a", "text": "3 m/s²" },
+        { "id": "b", "text": "-3 m/s²" },
+        { "id": "c", "text": "48 m/s²" },
+        { "id": "d", "text": "-48 m/s²" }
+      ],
+      "correctAnswer": "b",
+      "explanation": "a = (V_final - V_inicial) / Δt = (0 - 12) / 4 = -12 / 4 = -3 m/s². O sinal negativo indica que ele está freando (desacelerando).",
+      "hint": "V_final = 0 (parou), V_inicial = 12 m/s."
+    }
+  ]
+}

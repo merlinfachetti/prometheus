@@ -1,0 +1,101 @@
+{
+  "id": "kinematics-03-velocity",
+  "moduleId": "kinematics",
+  "order": 3,
+  "title": "Velocidade: A Rapidez do Movimento",
+  "description": "Do conceito intuitivo de rapidez à definição formal de velocidade.",
+  "blocks": [
+    {
+      "type": "text",
+      "content": "Você já sabe o que é movimento e deslocamento. Agora a pergunta natural é: quão rápido algo se move?"
+    },
+    {
+      "type": "text",
+      "content": "No dia a dia, usamos a palavra 'velocidade' para dizer que algo é rápido ou lento. Na Física, velocidade tem um significado preciso: ela relaciona o deslocamento com o tempo gasto."
+    },
+    {
+      "type": "highlight",
+      "content": "Velocidade mede quanto um objeto se desloca por unidade de tempo."
+    },
+    {
+      "type": "example",
+      "content": "Um carro percorre 100 km em 2 horas. Sua velocidade média é 100 ÷ 2 = 50 km/h. Outro carro percorre os mesmos 100 km em 1 hora: 100 ÷ 1 = 100 km/h. O segundo é duas vezes mais rápido."
+    },
+    {
+      "type": "text",
+      "content": "Repare que velocidade tem unidade — km/h, m/s, etc. A unidade padrão no Sistema Internacional (SI) é metros por segundo (m/s)."
+    },
+    {
+      "type": "highlight",
+      "content": "Velocidade média = deslocamento ÷ tempo. No SI, usamos m/s."
+    },
+    {
+      "type": "text",
+      "content": "Uma conversão útil: para ir de km/h para m/s, divida por 3,6. Para ir de m/s para km/h, multiplique por 3,6."
+    },
+    {
+      "type": "formula",
+      "content": "V_m = ΔS / Δt"
+    },
+    {
+      "type": "example",
+      "content": "Um ônibus a 72 km/h está a quantos m/s? 72 ÷ 3,6 = 20 m/s. Ou seja, a cada segundo ele avança 20 metros."
+    },
+    {
+      "type": "text",
+      "content": "Importante: velocidade média não significa que o objeto manteve aquela velocidade o tempo todo. Um carro com velocidade média de 60 km/h pode ter parado no semáforo e acelerado depois."
+    }
+  ],
+  "exercises": [
+    {
+      "id": "ex-03-01",
+      "type": "multiple_choice",
+      "question": "Um ciclista percorre 30 km em 2 horas. Qual é a velocidade média?",
+      "options": [
+        { "id": "a", "text": "60 km/h" },
+        { "id": "b", "text": "15 km/h" },
+        { "id": "c", "text": "30 km/h" },
+        { "id": "d", "text": "32 km/h" }
+      ],
+      "correctAnswer": "b",
+      "explanation": "Velocidade média = deslocamento / tempo = 30 km / 2 h = 15 km/h.",
+      "hint": "Use a fórmula: V = ΔS / Δt"
+    },
+    {
+      "id": "ex-03-02",
+      "type": "multiple_choice",
+      "question": "Converta 90 km/h para m/s.",
+      "options": [
+        { "id": "a", "text": "9 m/s" },
+        { "id": "b", "text": "25 m/s" },
+        { "id": "c", "text": "90 m/s" },
+        { "id": "d", "text": "324 m/s" }
+      ],
+      "correctAnswer": "b",
+      "explanation": "Para converter km/h para m/s, divida por 3,6. 90 ÷ 3,6 = 25 m/s.",
+      "hint": "Para ir de km/h para m/s, divida por 3,6."
+    },
+    {
+      "id": "ex-03-03",
+      "type": "true_false",
+      "question": "Se um carro tem velocidade média de 80 km/h, ele manteve essa velocidade durante todo o percurso.",
+      "correctAnswer": "false",
+      "explanation": "Falso! Velocidade média é o resultado do deslocamento total dividido pelo tempo total. O carro pode ter variado sua velocidade ao longo do caminho — parado, acelerado, freado. A média é apenas um valor representativo do percurso como um todo.",
+      "hint": "Pense em uma viagem real: você mantém a mesma velocidade o tempo todo?"
+    },
+    {
+      "id": "ex-03-04",
+      "type": "multiple_choice",
+      "question": "Um corredor completa 400 metros em 50 segundos. Qual sua velocidade média em m/s?",
+      "options": [
+        { "id": "a", "text": "4 m/s" },
+        { "id": "b", "text": "8 m/s" },
+        { "id": "c", "text": "20 m/s" },
+        { "id": "d", "text": "350 m/s" }
+      ],
+      "correctAnswer": "b",
+      "explanation": "V = ΔS / Δt = 400 m / 50 s = 8 m/s. O corredor avança, em média, 8 metros a cada segundo.",
+      "hint": "Divida a distância pelo tempo."
+    }
+  ]
+}
