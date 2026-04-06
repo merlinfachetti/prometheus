@@ -92,4 +92,4 @@ Total: 30 exercícios com feedback imediato, dicas e explicações.
 
 ## Licença
 
-Proprietário. Todos os direitos reservados.
+[MIT](LICENSE) — use, modifique e distribua livremente.
