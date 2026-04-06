@@ -1,0 +1,33 @@
+{
+  "app": {
+    "title": "Prometheus",
+    "subtitle": "Physics Learning Platform"
+  },
+  "navigation": {
+    "continue": "Continue",
+    "back": "Back",
+    "home": "Home",
+    "next": "Next",
+    "previous": "Previous"
+  },
+  "welcome": {
+    "heading": "Welcome to Prometheus",
+    "description": "Your journey into learning Physics starts here. No rush, no complexity — step by step, at your own pace.",
+    "startButton": "Start Now",
+    "continueButton": "Continue Where I Left Off"
+  },
+  "lesson": {
+    "exercise": "Exercise",
+    "checkAnswer": "Check Answer",
+    "tryAgain": "Try Again",
+    "correct": "Correct! Well done!",
+    "incorrect": "Not this time. See the explanation:",
+    "hint": "Hint",
+    "explanation": "Explanation",
+    "progress": "Progress"
+  },
+  "errors": {
+    "contentLoadFailed": "Could not load content. Please try again.",
+    "generic": "Something went wrong. Please try again."
+  }
+}

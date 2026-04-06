@@ -1,0 +1,33 @@
+{
+  "app": {
+    "title": "Prometheus",
+    "subtitle": "Plataforma de Aprendizado de Física"
+  },
+  "navigation": {
+    "continue": "Continuar",
+    "back": "Voltar",
+    "home": "Início",
+    "next": "Próximo",
+    "previous": "Anterior"
+  },
+  "welcome": {
+    "heading": "Bem-vindo ao Prometheus",
+    "description": "Sua jornada no aprendizado de Física começa aqui. Sem pressa, sem complicação — passo a passo, no seu ritmo.",
+    "startButton": "Começar Agora",
+    "continueButton": "Continuar de Onde Parei"
+  },
+  "lesson": {
+    "exercise": "Exercício",
+    "checkAnswer": "Verificar Resposta",
+    "tryAgain": "Tentar Novamente",
+    "correct": "Correto! Muito bem!",
+    "incorrect": "Não foi dessa vez. Veja a explicação:",
+    "hint": "Dica",
+    "explanation": "Explicação",
+    "progress": "Progresso"
+  },
+  "errors": {
+    "contentLoadFailed": "Não foi possível carregar o conteúdo. Tente novamente.",
+    "generic": "Algo deu errado. Tente novamente."
+  }
+}

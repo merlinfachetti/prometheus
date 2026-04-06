@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+:root {
+  --color-primary: #1e3a5f;
+  --color-primary-light: #2a5a8f;
+  --color-accent: #e8a838;
+  --color-accent-hover: #d4952e;
+  --color-bg: #f8f6f2;
+  --color-bg-card: #ffffff;
+  --color-text: #1a1a2e;
+  --color-text-muted: #6b7280;
+  --color-success: #22c55e;
+  --color-error: #ef4444;
+
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Large, readable text for accessibility */
+body {
+  font-size: 18px;
+}
+
+/* Prevent text selection on UI elements (feels more native) */
+button,
+nav,
+header {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Smooth focus styles for accessibility */
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
