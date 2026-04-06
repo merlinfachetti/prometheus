@@ -1,0 +1,109 @@
+{
+  "id": "kinematics-07-uniformly-accelerated-motion",
+  "moduleId": "kinematics",
+  "order": 7,
+  "title": "Movimento Uniformemente Variado (MRUV)",
+  "description": "O movimento com aceleração constante e suas equações.",
+  "blocks": [
+    {
+      "type": "text",
+      "content": "No MRU, a velocidade era constante. Agora vamos estudar o caso em que a aceleração é constante — ou seja, a velocidade muda de forma regular e previsível."
+    },
+    {
+      "type": "highlight",
+      "content": "Movimento Uniformemente Variado (MRUV) é quando um objeto se move com aceleração constante. A velocidade aumenta (ou diminui) sempre no mesmo ritmo."
+    },
+    {
+      "type": "text",
+      "content": "O MRUV é descrito por duas equações fundamentais. A primeira é a função horária da velocidade:"
+    },
+    {
+      "type": "formula",
+      "content": "V = V₀ + a · t"
+    },
+    {
+      "type": "text",
+      "content": "Onde V é a velocidade no instante t, V₀ é a velocidade inicial e a é a aceleração constante."
+    },
+    {
+      "type": "example",
+      "content": "Um carro parte com V₀ = 10 m/s e aceleração a = 2 m/s². Após 5 segundos: V = 10 + 2 × 5 = 20 m/s."
+    },
+    {
+      "type": "text",
+      "content": "A segunda equação dá a posição ao longo do tempo:"
+    },
+    {
+      "type": "formula",
+      "content": "S = S₀ + V₀ · t + (a · t²) / 2"
+    },
+    {
+      "type": "example",
+      "content": "Mesmo carro: S₀ = 0, V₀ = 10 m/s, a = 2 m/s². Após 5 segundos: S = 0 + 10×5 + (2×25)/2 = 50 + 25 = 75 m."
+    },
+    {
+      "type": "text",
+      "content": "Existe ainda uma terceira equação, muito útil quando não temos o tempo — a equação de Torricelli:"
+    },
+    {
+      "type": "formula",
+      "content": "V² = V₀² + 2 · a · ΔS"
+    },
+    {
+      "type": "example",
+      "content": "Um carro freia de 20 m/s até parar. Aceleração = -4 m/s². Qual a distância de frenagem? 0² = 20² + 2×(-4)×ΔS → 0 = 400 - 8ΔS → ΔS = 50 m."
+    }
+  ],
+  "exercises": [
+    {
+      "id": "ex-07-01",
+      "type": "multiple_choice",
+      "question": "Um carro parte do repouso com aceleração de 3 m/s². Qual sua velocidade após 8 segundos?",
+      "options": [
+        { "id": "a", "text": "11 m/s" },
+        { "id": "b", "text": "24 m/s" },
+        { "id": "c", "text": "96 m/s" },
+        { "id": "d", "text": "3 m/s" }
+      ],
+      "correctAnswer": "b",
+      "explanation": "V = V₀ + a·t = 0 + 3 × 8 = 24 m/s.",
+      "hint": "Parte do repouso: V₀ = 0. Use V = V₀ + a·t."
+    },
+    {
+      "id": "ex-07-02",
+      "type": "multiple_choice",
+      "question": "Um objeto parte da origem com V₀ = 5 m/s e aceleração de 2 m/s². Qual a posição em t = 4s?",
+      "options": [
+        { "id": "a", "text": "20 m" },
+        { "id": "b", "text": "36 m" },
+        { "id": "c", "text": "28 m" },
+        { "id": "d", "text": "13 m" }
+      ],
+      "correctAnswer": "b",
+      "explanation": "S = S₀ + V₀·t + (a·t²)/2 = 0 + 5×4 + (2×16)/2 = 20 + 16 = 36 m.",
+      "hint": "Use S = S₀ + V₀·t + (a·t²)/2."
+    },
+    {
+      "id": "ex-07-03",
+      "type": "multiple_choice",
+      "question": "Um carro a 30 m/s freia com aceleração de -5 m/s². Qual a distância de frenagem até parar?",
+      "options": [
+        { "id": "a", "text": "90 m" },
+        { "id": "b", "text": "45 m" },
+        { "id": "c", "text": "180 m" },
+        { "id": "d", "text": "6 m" }
+      ],
+      "correctAnswer": "a",
+      "explanation": "Usando Torricelli: V² = V₀² + 2aΔS → 0 = 900 + 2(-5)ΔS → 0 = 900 - 10ΔS → ΔS = 90 m.",
+      "hint": "V final = 0 (parou). Use V² = V₀² + 2·a·ΔS."
+    },
+    {
+      "id": "ex-07-04",
+      "type": "true_false",
+      "question": "No MRUV, se a aceleração é negativa, o objeto está necessariamente voltando.",
+      "correctAnswer": "false",
+      "explanation": "Falso! Aceleração negativa significa que a velocidade está diminuindo no sentido positivo, não que o objeto mudou de direção. Um carro indo para frente e freando tem aceleração negativa, mas continua indo para frente — apenas mais devagar.",
+      "hint": "Aceleração negativa = desaceleração, não inversão de sentido."
+    }
+  ]
+}

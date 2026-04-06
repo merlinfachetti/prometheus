@@ -1,0 +1,109 @@
+{
+  "id": "kinematics-08-free-fall",
+  "moduleId": "kinematics",
+  "order": 8,
+  "title": "Queda Livre",
+  "description": "O caso especial do MRUV onde a gravidade é a aceleração.",
+  "blocks": [
+    {
+      "type": "text",
+      "content": "Agora que você domina o MRUV, vamos ver um caso especial muito importante: a queda livre."
+    },
+    {
+      "type": "text",
+      "content": "Quando você solta um objeto (sem empurrar), ele cai acelerando. Essa aceleração é causada pela gravidade da Terra e, perto da superfície, é praticamente constante."
+    },
+    {
+      "type": "highlight",
+      "content": "Na queda livre, a aceleração é a gravidade: g ≈ 10 m/s² (ou mais precisamente, 9,8 m/s²). O objeto parte do repouso e ganha velocidade à medida que cai."
+    },
+    {
+      "type": "text",
+      "content": "Galileu Galilei descobriu algo surpreendente: no vácuo, todos os objetos caem com a mesma aceleração, independentemente do peso. Uma pena e uma bola de boliche caem juntas se não houver ar!"
+    },
+    {
+      "type": "text",
+      "content": "As equações da queda livre são as mesmas do MRUV, substituindo a por g:"
+    },
+    {
+      "type": "formula",
+      "content": "V = V₀ + g · t"
+    },
+    {
+      "type": "formula",
+      "content": "H = H₀ + V₀ · t + (g · t²) / 2"
+    },
+    {
+      "type": "formula",
+      "content": "V² = V₀² + 2 · g · ΔH"
+    },
+    {
+      "type": "text",
+      "content": "Geralmente usamos H para altura, e adotamos g = 10 m/s² para facilitar os cálculos."
+    },
+    {
+      "type": "example",
+      "content": "Uma pedra é solta do alto de um prédio de 45 metros. Quanto tempo demora para chegar ao chão? H = H₀ + V₀·t + (g·t²)/2. Tomando para baixo como positivo: 45 = 0 + 0 + (10·t²)/2 → 45 = 5t² → t² = 9 → t = 3 s."
+    },
+    {
+      "type": "example",
+      "content": "Com que velocidade a pedra chega ao chão? V = 0 + 10 × 3 = 30 m/s. Ou em km/h: 30 × 3,6 = 108 km/h!"
+    },
+    {
+      "type": "highlight",
+      "content": "Lançamento vertical para cima: o objeto sobe desacelerando (g freia a subida), para no ponto mais alto (V = 0), e depois desce acelerando."
+    }
+  ],
+  "exercises": [
+    {
+      "id": "ex-08-01",
+      "type": "multiple_choice",
+      "question": "Um objeto é solto do repouso e cai em queda livre (g = 10 m/s²). Qual sua velocidade após 4 segundos?",
+      "options": [
+        { "id": "a", "text": "4 m/s" },
+        { "id": "b", "text": "20 m/s" },
+        { "id": "c", "text": "40 m/s" },
+        { "id": "d", "text": "80 m/s" }
+      ],
+      "correctAnswer": "c",
+      "explanation": "V = V₀ + g·t = 0 + 10 × 4 = 40 m/s.",
+      "hint": "Parte do repouso (V₀ = 0). Use V = g · t."
+    },
+    {
+      "id": "ex-08-02",
+      "type": "multiple_choice",
+      "question": "Qual a altura que um objeto em queda livre percorre em 3 segundos? (g = 10 m/s²)",
+      "options": [
+        { "id": "a", "text": "15 m" },
+        { "id": "b", "text": "30 m" },
+        { "id": "c", "text": "45 m" },
+        { "id": "d", "text": "90 m" }
+      ],
+      "correctAnswer": "c",
+      "explanation": "H = (g·t²)/2 = (10 × 9)/2 = 45 m.",
+      "hint": "Partindo do repouso: H = (g·t²)/2."
+    },
+    {
+      "id": "ex-08-03",
+      "type": "true_false",
+      "question": "No vácuo, uma bola de chumbo e uma pena caem com a mesma aceleração.",
+      "correctAnswer": "true",
+      "explanation": "Correto! No vácuo (sem resistência do ar), todos os objetos caem com a mesma aceleração gravitacional, independentemente da massa. Isso foi demonstrado por Galileu e confirmado por astronautas na Lua.",
+      "hint": "Pense no que Galileu descobriu sobre a queda dos corpos."
+    },
+    {
+      "id": "ex-08-04",
+      "type": "multiple_choice",
+      "question": "Uma bola é lançada para cima com velocidade de 20 m/s. Quanto tempo ela leva para atingir o ponto mais alto? (g = 10 m/s²)",
+      "options": [
+        { "id": "a", "text": "1 s" },
+        { "id": "b", "text": "2 s" },
+        { "id": "c", "text": "4 s" },
+        { "id": "d", "text": "20 s" }
+      ],
+      "correctAnswer": "b",
+      "explanation": "No ponto mais alto, V = 0. V = V₀ - g·t → 0 = 20 - 10t → t = 2 s. A gravidade desacelera o objeto a 10 m/s por segundo, então leva 2 segundos para ir de 20 m/s até 0.",
+      "hint": "No ponto mais alto a velocidade é zero. Use V = V₀ - g·t com V = 0."
+    }
+  ]
+}

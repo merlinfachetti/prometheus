@@ -23,8 +23,36 @@
     "correct": "Correct! Well done!",
     "incorrect": "Not this time. See the explanation:",
     "hint": "Hint",
+    "hideHint": "Hide hint",
     "explanation": "Explanation",
-    "progress": "Progress"
+    "progress": "Progress",
+    "lessonOf": "Lesson {current} of {total}",
+    "practicePrompt": "Time to practice what you've learned!",
+    "startExercises": "Start Exercises",
+    "exercisesTitle": "Exercises",
+    "lessonComplete": "Lesson complete!",
+    "scoreMessage": "You got {score} out of {total} exercises right.",
+    "nextLesson": "Next Lesson",
+    "trueLabel": "True",
+    "falseLabel": "False"
+  },
+  "moduleComplete": {
+    "title": "Module Complete!",
+    "congratulations": "Congratulations! You completed all lessons in this module.",
+    "hits": "Correct",
+    "exercises": "Exercises",
+    "performance": "Performance",
+    "reviewLessons": "Review Lessons",
+    "backToHome": "Back to Home"
+  },
+  "settings": {
+    "title": "Settings",
+    "resetProgress": "Reset Progress",
+    "resetConfirm": "Are you sure? All progress will be lost.",
+    "resetSuccess": "Progress reset successfully!",
+    "version": "Version",
+    "cancel": "Cancel",
+    "confirm": "Confirm"
   },
   "errors": {
     "contentLoadFailed": "Could not load content. Please try again.",

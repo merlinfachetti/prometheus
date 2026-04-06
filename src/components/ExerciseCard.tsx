@@ -79,8 +79,8 @@ export function ExerciseCard({ exercise, index, onComplete }: ExerciseCardProps)
       {exercise.type === "true_false" && (
         <div className="flex gap-4 mb-5">
           {[
-            { id: "true", label: "Verdadeiro" },
-            { id: "false", label: "Falso" },
+            { id: "true", label: strings.lesson.trueLabel },
+            { id: "false", label: strings.lesson.falseLabel },
           ].map((option) => {
             let optionStyle = "border-gray-200 hover:border-[var(--color-primary-light)] hover:bg-gray-50";
 
@@ -116,7 +116,7 @@ export function ExerciseCard({ exercise, index, onComplete }: ExerciseCardProps)
           onClick={() => setShowHint(!showHint)}
           className="text-[var(--color-primary-light)] text-base underline mb-4 block cursor-pointer"
         >
-          {showHint ? "Esconder dica" : strings.lesson.hint}
+          {showHint ? strings.lesson.hideHint : strings.lesson.hint}
         </button>
       )}
       {showHint && !submitted && (
@@ -141,8 +141,8 @@ export function ExerciseCard({ exercise, index, onComplete }: ExerciseCardProps)
 
       {/* Feedback */}
       {submitted && (
-        <div className={`mt-4 px-5 py-4 rounded-lg ${
-          isCorrect ? "bg-green-50 border border-green-300" : "bg-red-50 border border-red-300"
+        <div className={`mt-4 px-5 py-4 rounded-lg animate-feedback ${
+          isCorrect ? "bg-green-50 border border-green-300 animate-correct" : "bg-red-50 border border-red-300"
         }`}>
           <p className={`text-lg font-semibold mb-2 ${
             isCorrect ? "text-green-700" : "text-red-700"

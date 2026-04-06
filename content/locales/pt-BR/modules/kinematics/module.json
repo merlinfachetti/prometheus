@@ -8,6 +8,9 @@
     "kinematics-02-position-and-reference",
     "kinematics-03-velocity",
     "kinematics-04-average-velocity",
-    "kinematics-05-uniform-motion"
+    "kinematics-05-uniform-motion",
+    "kinematics-06-acceleration",
+    "kinematics-07-uniformly-accelerated-motion",
+    "kinematics-08-free-fall"
   ]
 }

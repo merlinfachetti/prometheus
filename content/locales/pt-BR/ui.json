@@ -23,8 +23,36 @@
     "correct": "Correto! Muito bem!",
     "incorrect": "Não foi dessa vez. Veja a explicação:",
     "hint": "Dica",
+    "hideHint": "Esconder dica",
     "explanation": "Explicação",
-    "progress": "Progresso"
+    "progress": "Progresso",
+    "lessonOf": "Aula {current} de {total}",
+    "practicePrompt": "Hora de praticar o que você aprendeu!",
+    "startExercises": "Iniciar Exercícios",
+    "exercisesTitle": "Exercícios",
+    "lessonComplete": "Aula concluída!",
+    "scoreMessage": "Você acertou {score} de {total} exercícios.",
+    "nextLesson": "Próxima Aula",
+    "trueLabel": "Verdadeiro",
+    "falseLabel": "Falso"
+  },
+  "moduleComplete": {
+    "title": "Módulo Concluído!",
+    "congratulations": "Parabéns! Você completou todas as aulas deste módulo.",
+    "hits": "Acertos",
+    "exercises": "Exercícios",
+    "performance": "Aproveitamento",
+    "reviewLessons": "Revisar Aulas",
+    "backToHome": "Voltar ao Início"
+  },
+  "settings": {
+    "title": "Configurações",
+    "resetProgress": "Resetar Progresso",
+    "resetConfirm": "Tem certeza? Todo o progresso será perdido.",
+    "resetSuccess": "Progresso resetado com sucesso!",
+    "version": "Versão",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar"
   },
   "errors": {
     "contentLoadFailed": "Não foi possível carregar o conteúdo. Tente novamente.",

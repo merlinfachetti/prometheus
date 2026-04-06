@@ -90,6 +90,11 @@ export async function getLastCompletedLessonId(): Promise<string | null> {
   return (rows[0] as Record<string, unknown>).lesson_id as string;
 }
 
+export async function resetAllProgress(): Promise<void> {
+  const database = (await getDb()) as DB;
+  await database.execute("DELETE FROM user_progress");
+}
+
 export async function getCompletedLessonIds(): Promise<Set<string>> {
   const database = (await getDb()) as DB;
 
